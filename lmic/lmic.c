@@ -1491,7 +1491,8 @@ static void processRx2DnData (xref2osjob_t osjob) {
         // Delay callback processing to avoid up TX while gateway is txing our missed frame! 
         // Since DNW2 uses SF12 by default we wait 3 secs.
         os_setTimedCallback(&LMIC.osjob,
-                            (os_getTime() + DNW2_SAFETY_ZONE + rndDelay(2)),
+                            //(os_getTime() + DNW2_SAFETY_ZONE + rndDelay(2)),
+                            os_getTime(),
                             FUNC_ADDR(processRx2DnDataDelay));
         return;
     }
